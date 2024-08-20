@@ -106,3 +106,70 @@ h2 {
         }
     }
 }
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    select {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .delete-all {
+        background-color: rgb(205, 3, 3);
+        border: none;
+        color: white;
+        border-radius: .3rem;
+        padding: .5rem;
+        margin: .2rem;
+        cursor: pointer;
+        transition: all .2s;
+
+        &:hover {
+            background-color: rgb(248, 91, 91);
+        }
+    }
+}
+
+.search-filter-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    input[type="text"] {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+
+    .filters {
+        display: flex;
+        justify-content: space-between;
+
+        select {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .delete-all {
+            background-color: rgb(205, 3, 3);
+            border: none;
+            color: white;
+            border-radius: .3rem;
+            padding: .5rem;
+            margin: .2rem;
+            cursor: pointer;
+            transition: all .2s;
+
+            &:hover {
+                background-color: rgb(248, 91, 91);
+            }
+        }
+    }
+}
+

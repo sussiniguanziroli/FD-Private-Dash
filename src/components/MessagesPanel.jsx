@@ -54,7 +54,11 @@ const MessagesPanel = () => {
                 setFilteredMessages(updatedMessages);
             }
         } catch (error) {
-            console.error("Error archiving message: ", error);
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "No se ha podido archivar",
+              });
         }
     };
 

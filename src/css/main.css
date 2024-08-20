@@ -57,6 +57,51 @@ h2 {
   font-size: 16px;
 }
 
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.filters .filter-button,
+.filters .refresh-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+.filters .filter-button.active,
+.filters .refresh-button.active {
+  background-color: #3d8b40;
+}
+.filters .filter-button:hover,
+.filters .refresh-button:hover {
+  background-color: #3d8b40;
+}
+.filters .refresh-button {
+  background-color: #FFC107;
+}
+.filters .refresh-button:hover {
+  background-color: #d39e00;
+}
+
+.delete-all-button {
+  background-color: #F44336;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+.delete-all-button:hover {
+  background-color: #ea1c0d;
+}
+
 .login-container {
   max-width: 400px;
   margin: 50px auto;

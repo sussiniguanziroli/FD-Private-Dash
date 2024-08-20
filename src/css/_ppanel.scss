@@ -64,3 +64,59 @@ h2 {
     border-radius: 5px;
     font-size: 16px;
 }
+
+// estilos filtrado
+
+// src/styles/MessagesPanel.scss
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    .filter-button,
+    .refresh-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+
+        &.active {
+            background-color: darken(#4CAF50, 10%);
+        }
+
+        &:hover {
+            background-color: darken(#4CAF50, 10%);
+        }
+    }
+
+    .refresh-button {
+        background-color: #FFC107;
+
+        &:hover {
+            background-color: darken(#FFC107, 10%);
+        }
+    }
+}
+
+// src/styles/MessagesPanel.scss
+
+// Agregar estilos para el botón de eliminar todos
+.delete-all-button {
+    background-color: #F44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: darken(#F44336, 10%);
+    }
+}

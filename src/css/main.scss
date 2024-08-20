@@ -1,0 +1,17 @@
+@import "variables.scss";
+@import "ppanel.scss";
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: $secondary-color;
+    color: $font-color;
+    margin: 0;
+    padding: 0;
+  }

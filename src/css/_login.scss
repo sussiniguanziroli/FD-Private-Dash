@@ -5,61 +5,61 @@
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
+}
+
+h2 {
     color: $primary-color;
     text-align: center;
     margin-bottom: 20px;
-  }
-  
-  .login-form {
+}
+
+.login-form {
     display: flex;
     flex-direction: column;
-  
+
     .input-group {
-      margin-bottom: 15px;
-  
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-        color: $font-color;
-      }
-  
-      input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 16px;
-      }
+        margin-bottom: 15px;
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: $font-color;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
     }
-  
+
     .error {
-      color: $error-color;
-      margin-bottom: 15px;
-      text-align: center;
+        color: $error-color;
+        margin-bottom: 15px;
+        text-align: center;
     }
-  
+
     button {
-      background-color: $primary-color;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-  
-      &:hover {
-        background-color: darken($primary-color, 10%);
-      }
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: darken($primary-color, 10%);
+        }
     }
-  }
+}
 
 
-  // src/styles/Login.scss
+// src/styles/Login.scss
 
 .logout-button {
     position: absolute;
@@ -73,9 +73,8 @@
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease;
-  
+
     &:hover {
-      background-color: darken(#F44336, 10%);
+        background-color: darken(#F44336, 10%);
     }
-  }
-  
+}

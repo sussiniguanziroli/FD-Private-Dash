@@ -48,6 +48,15 @@ h2 {
   background-color: #ea1c0d;
 }
 
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
 .login-container {
   max-width: 400px;
   margin: 50px auto;

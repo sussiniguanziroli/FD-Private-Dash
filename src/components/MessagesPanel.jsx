@@ -1,8 +1,6 @@
-// src/components/MessagesPanel.jsx
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, deleteDoc, doc, writeBatch } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc, writeBatch, setDoc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
-
 
 const MessagesPanel = () => {
     const [messages, setMessages] = useState([]);
@@ -29,7 +27,7 @@ const MessagesPanel = () => {
         let filtered = messages.filter(message =>
             message.email.toLowerCase().includes(lowercasedTerm) ||
             message.nombre.toLowerCase().includes(lowercasedTerm) ||
-            message.consulta.toLowerCase().includes(lowercasedTerm)
+            message.mensaje.toLowerCase().includes(lowercasedTerm)
         );
 
         if (sortOrder === 'latest') {
@@ -41,20 +39,40 @@ const MessagesPanel = () => {
         setFilteredMessages(filtered);
     }, [searchTerm, messages, sortOrder]);
 
-    const handleDelete = async (id) => {
-        await deleteDoc(doc(db, 'mensajes', id));
-        const updatedMessages = messages.filter(message => message.id !== id);
-        setMessages(updatedMessages);
-        setFilteredMessages(updatedMessages);
+    const handleArchive = async (id) => {
+        try {
+            const messageRef = doc(db, 'mensajes', id);
+            const archivedMessageRef = doc(db, 'msjarchivo', id);
+
+            const messageSnap = await getDoc(messageRef);
+            if (messageSnap.exists()) {
+                await setDoc(archivedMessageRef, messageSnap.data());
+                await deleteDoc(messageRef);
+
+                const updatedMessages = messages.filter(message => message.id !== id);
+                setMessages(updatedMessages);
+                setFilteredMessages(updatedMessages);
+            }
+        } catch (error) {
+            console.error("Error archiving message: ", error);
+        }
     };
 
-    const handleDeleteAll = async () => {
+    const handleArchiveAll = async () => {
         const batch = writeBatch(db);
+        const archiveBatch = writeBatch(db);
+
         messages.forEach(message => {
             const messageRef = doc(db, 'mensajes', message.id);
+            const archivedMessageRef = doc(db, 'msjarchivo', message.id);
+
             batch.delete(messageRef);
+            archiveBatch.set(archivedMessageRef, message);
         });
+
         await batch.commit();
+        await archiveBatch.commit();
+
         setMessages([]);
         setFilteredMessages([]);
     };
@@ -87,15 +105,15 @@ const MessagesPanel = () => {
                     Orden Alfabético
                 </button>
                 <button onClick={handleRefresh} className="refresh-button">Recargar</button>
-                <button onClick={handleDeleteAll} className="delete-all-button">Eliminar Todos</button>
+                <button onClick={handleArchiveAll} className="archive-all-button">Archivar Todos</button>
             </div>
             <ul className="messages-list">
                 {filteredMessages.map(message => (
                     <li key={message.id}>
                         <p>Email: {message.email}</p>
                         <p>Nombre: {message.nombre}</p>
-                        <p>Consulta: {message.consulta}</p>
-                        <button onClick={() => handleDelete(message.id)}>Eliminar</button>
+                        <p>Consulta: {message.mensaje}</p>
+                        <button onClick={() => handleArchive(message.id)}>Archivar</button>
                     </li>
                 ))}
             </ul>
